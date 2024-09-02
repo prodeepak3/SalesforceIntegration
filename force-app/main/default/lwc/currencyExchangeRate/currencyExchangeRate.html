@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="Exchange Rate Application">
+        <lightning-layout multiple-rows="true">
+            <template lwc:if={show}>
+                    <lightning-layout-item class="slds-var-p-around_small" size="6">
+                        <lightning-select
+                        name="tickets"
+                        label="Select Currency"
+                        options={options}
+                        onchange={handleCurrencyChange}
+                        ></lightning-select>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-p-around_small" size="6">
+                        <lightning-input type="number" value={resultCount} label="Result Count" onchange={handleCountChange}>
+                        </lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-p-around_small" size="12">
+                        <lightning-datatable
+                            key-field="id"
+                            data={visibleData}
+                            columns={columns}
+                            hide-checkbox-column>
+                    </lightning-datatable>
+                    </lightning-layout-item>
+                
+            </template>
+            <template lwc:else>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+        </lightning-layout>
+    </lightning-card>
+</template>
