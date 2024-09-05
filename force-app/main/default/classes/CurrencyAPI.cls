@@ -7,6 +7,7 @@ public with sharing class CurrencyAPI {
         request.setEndpoint('https://api.frankfurter.app/latest?from='+country);
         request.setMethod('GET');
         response = http.send(request);
+        System.debug('Response: '+response.getBody()+'Status:'+response.getStatus()+'Status Code:'+response.getStatusCode());
         return response.getBody();
     }
     @AuraEnabled(cacheable=true)
@@ -16,7 +17,10 @@ public with sharing class CurrencyAPI {
         HttpResponse response;
         request.setEndpoint('https://api.frankfurter.app/currencies');
         request.setMethod('GET');
-        response = http.send(request);
+        response = http.send(request);  
+        System.debug('Response: '+response.getBody());
+        System.debug('Status:'+response.getStatus());
+        System.System.debug('Status Code:'+response.getStatusCode());
         return response.getBody();
     }
 }
